@@ -24,4 +24,15 @@ class Responsable extends Travailleur implements ResponsableInterface
     {
         echo "je suis le responsable, je m'appelle {$this->prenom} {$this->nom}";
     }
+
+    public function faireTravailler(ExploiteInterface $travailleur) :void {
+        $travailleur->travailler();
+    }
+
+    public function faireTravaillerEquipe() : void {
+        foreach ($this->equipe as $member){
+            $member->travailler();
+            echo "<br/>";
+        }
+    }
 }

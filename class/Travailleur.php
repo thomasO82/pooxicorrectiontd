@@ -1,11 +1,11 @@
 <?php
 
-abstract class Travailleur
+abstract class Travailleur implements EmployeInterface
 {
     // ATTRIBUTS
-    protected string $prenom;
-    protected string $nom;
-    protected int $age;
+    
+    use PersonTrait;
+
     protected int $anciennete;
     protected static int $nbEmploye = 0;
     const NB_EMPLOYE_MAX = 10;
