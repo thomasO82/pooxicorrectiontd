@@ -3,7 +3,7 @@
 abstract class Travailleur implements EmployeInterface
 {
     // ATTRIBUTS
-    
+
     use PersonTrait;
 
     protected int $anciennete;
@@ -27,6 +27,10 @@ abstract class Travailleur implements EmployeInterface
 
     static public function incrementEmployer(): void
     {
+        if (self::$nbEmploye >= self::NB_EMPLOYE_MAX) {
+            throw new Exception("Trop d'employé");
+            
+        }
         self::$nbEmploye++;
     }
 
@@ -61,7 +65,8 @@ abstract class Travailleur implements EmployeInterface
         if ($_age >= 18 && $_age <= 65) {
             return $this->age = $_age;
         }
-        echo "l'age doit etre comprius entre 18 et 65 ans";
+        throw new Exception("L'age doit etre compris entre 18 et 65 ans");
+        
     }
 
     public function getAnciennete()
@@ -79,6 +84,8 @@ abstract class Travailleur implements EmployeInterface
         if ($_anciennete <= 40) {
             return $this->anciennete = $_anciennete;
         }
-        echo ("l'ancienneté ne peut etre superieur a 40");
+        throw new Exception("l'ancienneté ne peut etre superieur a 40");
+        
     }
+    
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once "interfaces/VolerInterface.php";
 require_once "interfaces/EmployeInterface.php";
@@ -12,14 +12,19 @@ require_once "class/Employe.php";
 require_once "class/Responsable.php";
 require_once "class/Stagiaire.php";
 
-$responsable = new Responsable("Chef", "truc", 34, 21);
 
-$employeOne = new Employe("Test", "Truc", 23, 4);
-$employeTwo = new Employe("Employe 2", "Muche", 23, 4);
-$stagiaire = new Stagiaire("stagiaire", "Renaud", 33);
+try {
+    $responsable = new Responsable("Chef", "truc", 34, 21);
 
-$responsable->ajouterEmployer($employeOne);
-$responsable->ajouterEmployer($employeTwo);
+    $employeOne = new Employe("Test", "Truc", 100, 4);
+    $employeTwo = new Employe("Employe 2", "Muche", 23, 4);
+    $stagiaire = new Stagiaire("stagiaire", "Renaud", 33);
 
-$responsable->faireTravaillerEquipe();
-// $responsable->faireTravailler($stagiaire);
+    $responsable->ajouterEmployer($employeOne);
+    $responsable->ajouterEmployer($employeTwo);
+
+    $responsable->faireTravaillerEquipe();
+    // $responsable->faireTravailler($stagiaire);
+} catch (\Throwable $e) {
+    echo $e->getMessage();
+}
